@@ -1,0 +1,64 @@
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: hidden;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.line-mask {
+	overflow: hidden;
+}
+.line {
+	display: inline;
+}
+
+html.w-editor body {
+	cursor: auto;
+}
+.no-scroll {
+  overflow: hidden; 
+}
+
+/**
+
+<style>
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: hidden;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+</style>
+
+<style>
+.line-mask {
+	overflow: hidden;
+}
+.line {
+	display: inline;
+}
+</style>
+
+<style>
+html.w-editor body {
+	cursor: auto;
+}
+.no-scroll {
+  overflow: hidden; 
+}
+
+</style>
+
+*/
