@@ -1,9 +1,4 @@
-import "https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.23/bundled/lenis.min.js";
-import "https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js";
-import "https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js";
-import "https://unpkg.com/split-type";
-
-
+// Lenis framework - used to create an ease effect during scroll release, similar to swiping on mobile.
 let lenis = new Lenis({
   lerp: 0.1,
   wheelMultiplier: 0.7,
@@ -11,17 +6,22 @@ let lenis = new Lenis({
   normalizeWheel: false,
   smoothTouch: false,
 });
+
 function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
 }
+
 requestAnimationFrame(raf);
+
 $("[data-lenis-start]").on("click", function () {
   lenis.start();
 });
+
 $("[data-lenis-stop]").on("click", function () {
   lenis.stop();
 });
+
 $("[data-lenis-toggle]").on("click", function () {
   $(this).toggleClass("stop-scroll");
   if ($(this).hasClass("stop-scroll")) {
@@ -33,21 +33,12 @@ $("[data-lenis-toggle]").on("click", function () {
 
 
 // SCROLL INTERACTION
-//let click = document.getElementById("click");
-//click.load();
 gsap.registerPlugin(ScrollTrigger);
-
-// On page load set image to first collection item image
-//$(".image").attr("src", $(".expertise_item").eq(0).find(".expertise_img").attr("src"));
 
 // Anytime item is scrolled into view
 function updateImages(currentItem) {
   $(".expertise_item").removeClass("active");
   currentItem.addClass("active");
-  //let imageSrc = currentItem.find(".expertise_img").attr("src");
-  //$(".image").attr("src", imageSrc);
-  //click.currentTime = 0;
-  //click.play();
 }
 
 
@@ -127,13 +118,13 @@ $(".sticky-rectangle_wrap").each(function (index) {
 
 // Move anchor menu up to the navbar
 gsap.to(anchorMenu, {
-  y: () => -(window.innerHeight - 150),  //static offset that lines up for now. navbar.offsetHeight
+  y: () => -(window.innerHeight - 150),       // static offset that lines up for now. navbar.offsetHeight
   ease: 'power2.inOut',
   scrollTrigger: {
     trigger: 'body',
     start: 'top top',                         // Start animation on scroll start
     end: '300px top',                         // Stop moving after 300px scroll
-    scrub: false,                              // We want it to animate vs. scrub
+    scrub: false,                             // We want it to animate vs. scrub
     markers: true,                            // Add markers to debug
   }
 });
@@ -153,7 +144,7 @@ gsap.to(logo, {
 });
 
 
-/**
+/** ORIGINAL SCRIPT IN CASE THINGS GO WRONG
 
 <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.23/bundled/lenis.min.js"></script> 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
@@ -322,4 +313,42 @@ gsap.to(logo, {
 </script>
 
  
- */
+*/
+
+/** ORIGINAL CSS
+
+<style>
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: hidden;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+</style>
+
+<style>
+.line-mask {
+	overflow: hidden;
+}
+.line {
+	display: inline;
+}
+</style>
+
+<style>
+html.w-editor body {
+	cursor: auto;
+}
+.no-scroll {
+  overflow: hidden; 
+}
+
+</style>
+
+*/
