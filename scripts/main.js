@@ -1,3 +1,8 @@
+import * as Lenis from "https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.23/bundled/lenis.min.js";
+import * as gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js";
+import * as ScrollTrigger from "https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js";
+import * as SplitType from "https://unpkg.com/split-type";
+
 // Lenis framework - used to create an ease effect during scroll release, similar to swiping on mobile.
 let lenis = new Lenis({
   lerp: 0.1,
