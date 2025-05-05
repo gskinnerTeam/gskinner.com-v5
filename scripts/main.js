@@ -143,12 +143,14 @@ gsap.to(logo, {
   }
 });
 
-$(".logo-holder").each(function () {
+// Fade and slide the children in one at a time to create a ripple effect.
+$(".step-fade-children").each(function () {
+  console.log('Found a step-fade element!');
   let triggerElement = $(this);
 
   let children = triggerElement.children;
   for (var i = 0; i < children.length; i++) {
-    var ypos = 100 * i;
+    var ypos = 100 + (50 * i);
     gsap.timeline({
       scrollTrigger: {
         trigger: triggerElement,
@@ -161,7 +163,7 @@ $(".logo-holder").each(function () {
       children[i],
       {
         opacity: "0",
-        y: 100,
+        y: 50,
         duration: 1
       },
       {
