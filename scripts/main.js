@@ -143,6 +143,36 @@ gsap.to(logo, {
   }
 });
 
+$(".logo-holder").each(function () {
+  let triggerElement = $(this);
+
+  let children = triggerElement.children;
+  for (var i = 0; i < children.length; i++) {
+    var ypos = 100 * i;
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerElement,
+        // trigger element - viewport
+        start: ypos + "px top",
+        end: (200 + ypos) + "px top",
+        scrub: 1
+      }
+    }).fromTo(
+      children[i],
+      {
+        opacity: "0",
+        y: 100,
+        duration: 1
+      },
+      {
+        opacity: "1",
+        y: 0,
+        duration: 1
+      }
+    );
+  }
+});
+
 
 /** ORIGINAL SCRIPT IN CASE THINGS GO WRONG
 
