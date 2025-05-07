@@ -115,9 +115,8 @@ $(".sticky-rectangle_wrap").each(function (index) {
   );
 });
 
-
 // Move anchor menu up to the navbar
-gsap.to(anchorMenu, {
+gsap.to($(".anchor-menu-wrapper"), {
   y: () => -(window.innerHeight - 150),       // static offset that lines up for now. navbar.offsetHeight
   ease: 'power2.inOut',
   scrollTrigger: {
@@ -130,7 +129,7 @@ gsap.to(anchorMenu, {
 });
 
 // Fade out the logo as the menu rises
-gsap.to(logo, {
+gsap.to($(".logo_gskinner"), {
   opacity: 0,                                 // Fade out the logo
   duration: 0.5,
   ease: 'power2.out',
@@ -145,32 +144,26 @@ gsap.to(logo, {
 
 // Fade and slide the children in one at a time to create a ripple effect.
 $(".step-fade-children").each(function () {
-  console.log('Found a step-fade element!');
   let triggerElement = $(this);
 
-  let children = triggerElement.children;
+  const timeline = gsap.timeline({
+    defaults: {duration: 1},
+    scrollTrigger: {
+      trigger: triggerElement,
+      // trigger element - viewport
+      start: "bottom bottom-=100",
+      end: "bottom bottom-=400",
+      scrub: 1
+    }
+  });
+
+  const children = triggerElement.children();
   for (var i = 0; i < children.length; i++) {
-    var ypos = 100 + (50 * i);
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: triggerElement,
-        // trigger element - viewport
-        start: ypos + "px top",
-        end: (200 + ypos) + "px top",
-        scrub: 1
-      }
-    }).fromTo(
-      children[i],
-      {
-        opacity: "0",
-        y: 50,
-        duration: 1
-      },
-      {
-        opacity: "1",
-        y: 0,
-        duration: 1
-      }
+    timeline.fromTo( 
+      children[i], 
+      { opacity: "0", y: 100 }, 
+      { opacity: "1", y: 0}, 
+      "<" + (i * 0.5) 
     );
   }
 });
