@@ -1,5 +1,5 @@
 // Fade and slide the children up one at a time to create a ripple effect.
-$(".step-fade-hero-icons").each(function () {
+$(".step-fade-client-icons").each(function () {
   let triggerElement = $(this);
 
   const timeline = gsap.timeline({
@@ -7,8 +7,8 @@ $(".step-fade-hero-icons").each(function () {
     scrollTrigger: {
       trigger: triggerElement,
       // trigger element - viewport
-      start: "bottom bottom-=100",
-      end: "bottom bottom-=400",
+      start: "bottom bottom-=200",
+      end: "top top+=200",
       scrub: 1
     }
   });

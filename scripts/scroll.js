@@ -31,32 +31,6 @@ $("[data-lenis-toggle]").on("click", function () {
   }
 });
 
-// SCROLL INTERACTION
-// Anytime item is scrolled into view
-function updateImages(currentItem) {
-  $(".expertise_item").removeClass("active");
-  currentItem.addClass("active");
-}
-
-$(".expertise_item").each(function (index) {
-// EXPERTISE-IMAGE ANIMATION - will update the images as the user scrolls down.
-  let triggerElement = $(this);
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: triggerElement,
-      // trigger element - viewport
-      start: "top center",
-      end: "bottom center",
-      onEnter: () => {
-        updateImages(triggerElement);
-      },
-      onEnterBack: () => {
-        updateImages(triggerElement);
-      }
-    },
-  });
-});
-
 // PARAGRAPH-TEXT ANIMATION - will highlight each character as user scrolls.
 const splitTypes = document.querySelectorAll('.scroll-highlight');
 splitTypes.forEach((char,i) => {
